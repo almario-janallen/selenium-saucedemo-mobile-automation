@@ -1,16 +1,30 @@
 package tests;
 
+import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.LoginPage;
+import pages.MenuPage;
+import pages.ProductsPage;
 
 public class LoginTest extends BaseTest {
 
+    @BeforeMethod
+    public void goToLoginPage(){
+        MenuPage menuPage = new MenuPage(driver);
+        try{
+            menuPage.logout();
+        }catch (Exception e){
+            menuPage.goToLogin();
+        }
+    }
+
     @Test
     public void testValidLogin() {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("standard_user", "secret_sauce");
+        LoginPage login = new LoginPage(driver);
+        login.login("bod@example.com", "10203040");
 
-        // TODO: Add assertion later (check if products screen appears)
-        System.out.println("Login test executed successfully!");
+        ProductsPage products = new ProductsPage(driver);
+        Assert.assertTrue(products.isProductTitleDisplayed(),"User should land on Products page after login.");
     }
 }

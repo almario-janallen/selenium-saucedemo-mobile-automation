@@ -22,6 +22,9 @@ public class BaseTest {
         options.setApp(System.getProperty("user.dir") + "\\apks\\mda-2.2.0-25.apk");
         options.setPlatformName("Android");
 
+        options.setNoReset(false);
+        options.setFullReset(false);
+
         driver = new AndroidDriver(
                 new URL("http://127.0.0.1:4723/wd/hub"), options);
     }
