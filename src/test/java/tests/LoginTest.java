@@ -27,4 +27,13 @@ public class LoginTest extends BaseTest {
         ProductsPage products = new ProductsPage(driver);
         Assert.assertTrue(products.isProductTitleDisplayed(),"User should land on Products page after login.");
     }
+
+    @Test
+    public void testLockedOutUser() {
+        LoginPage login = new LoginPage(driver);
+        login.login("alice@example.com","10203040");
+
+        String errorMessage = login.getErrorMessage();
+        Assert.assertTrue(!errorMessage.isEmpty(),"Expected to see error message for locked out user");
+    }
 }

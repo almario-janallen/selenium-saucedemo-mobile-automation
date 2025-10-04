@@ -8,6 +8,16 @@ public class ProductsPage {
 
     private final By productTitle = By.xpath("//android.widget.TextView[@content-desc=\"title\"]");
     private final By menuButton = By.xpath("//android.widget.ImageView[@content-desc=\"View menu\"]");
+    private final By cartButton = By.xpath("//android.widget.RelativeLayout[@content-desc=\"View cart\"]");
+
+
+    private By productName(String productName) {
+        return By.xpath("//android.widget.TextView[@content-desc=\"Product Title\" and @text=\""+ productName + "\"]");
+    }
+
+    private By productPrice(String productName) {
+        return By.xpath("//android.widget.TextView[@text='" + productName + "']/following-sibling::android.widget.TextView[@content-desc='Product Price']");
+    }
 
     public ProductsPage(AppiumDriver driver){
         this.driver = driver;
