@@ -31,7 +31,6 @@ public class BaseTest {
 
     @Test
     public void sampleTest() {
-        // ✅ Correct way in Appium v8+
         try{
             WebElement sauceLabsLogo = driver.findElement(AppiumBy.accessibilityId("App logo and name"));
             System.out.println("Element exists!");
